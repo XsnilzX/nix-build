@@ -36,7 +36,9 @@
     tzdb-src,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       cpmCustomSources = [
         {
           name = "mcl";
@@ -64,12 +66,22 @@
         tzdbPath = tzdb-src;
       };
       packages.eden = self.packages.${system}.default;
+      packages.commet = import ./nix/commet-package.nix {
+        inherit pkgs;
+      };
       apps.default = flake-utils.lib.mkApp {
         drv = self.packages.${system}.default;
         exePath = "/bin/eden";
       };
+      apps.commet = flake-utils.lib.mkApp {
+        drv = self.packages.${system}.commet;
+        exePath = "/bin/commet";
+      };
       devShells.default = pkgs.mkShell {
-        inputsFrom = [self.packages.${system}.default];
+        inputsFrom = [
+          self.packages.${system}.default
+          self.packages.${system}.commet
+        ];
       };
     });
 }

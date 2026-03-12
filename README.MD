@@ -13,6 +13,18 @@ Diese Flake baut `eden` reproduzierbar in der Nix-Sandbox, ohne dass CPM zur Bui
 nix build .#eden
 ```
 
+Commet bauen:
+
+```bash
+nix build .#commet
+```
+
+Commet starten:
+
+```bash
+nix run .#commet
+```
+
 ## Neues (CPM-)Paket einpflegen
 
 Wenn Eden ein weiteres Paket via CPM herunterladen will, gibt es zwei Wege.
