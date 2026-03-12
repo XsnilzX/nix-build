@@ -1,0 +1,147 @@
+{
+  "nodes": {
+    "eden-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770758244,
+        "narHash": "sha256-xrwuiJJQtykXyJG2SJK81uC1s7GO9ufQnbmi9beLHJM=",
+        "ref": "master",
+        "rev": "6b3f8e1b62f17650ed60a83dd30bedbe86268169",
+        "revCount": 28323,
+        "type": "git",
+        "url": "https://git.eden-emu.dev/eden-emu/eden"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "https://git.eden-emu.dev/eden-emu/eden"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "frozen-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753800255,
+        "narHash": "sha256-zIczBSRDWjX9hcmYWYkbWY3NAAQwQtKhMTeHlYp4BKk=",
+        "ref": "refs/heads/master",
+        "rev": "61dce5ae18ca59931e27675c468e64118aba8744",
+        "revCount": 254,
+        "type": "git",
+        "url": "https://github.com/serge-sans-paille/frozen"
+      },
+      "original": {
+        "rev": "61dce5ae18ca59931e27675c468e64118aba8744",
+        "type": "git",
+        "url": "https://github.com/serge-sans-paille/frozen"
+      }
+    },
+    "mcl-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742164024,
+        "narHash": "sha256-uTOiOlMzKbZSjKjtVSqFU+9m8v8horoCq3wL0O2E8sI=",
+        "ref": "refs/heads/main",
+        "rev": "7b08d83418f628b800dfac1c9a16c3f59036fbad",
+        "revCount": 37,
+        "type": "git",
+        "url": "https://github.com/azahar-emu/mcl"
+      },
+      "original": {
+        "rev": "7b08d83418f628b800dfac1c9a16c3f59036fbad",
+        "type": "git",
+        "url": "https://github.com/azahar-emu/mcl"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1770562336,
+        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "eden-src": "eden-src",
+        "flake-utils": "flake-utils",
+        "frozen-src": "frozen-src",
+        "mcl-src": "mcl-src",
+        "nixpkgs": "nixpkgs",
+        "sirit-src": "sirit-src",
+        "tzdb-src": "tzdb-src"
+      }
+    },
+    "sirit-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763960311,
+        "narHash": "sha256-eBr+KorrAOFVzxRGZ2L3H6abfNAGrdVvO/NzOFwauTA=",
+        "ref": "refs/heads/master",
+        "rev": "4aa0fe9f2ca0b31d8345f89c8ca2757156ff2393",
+        "revCount": 250,
+        "type": "git",
+        "url": "https://github.com/eden-emulator/sirit"
+      },
+      "original": {
+        "rev": "4aa0fe9f2ca0b31d8345f89c8ca2757156ff2393",
+        "type": "git",
+        "url": "https://github.com/eden-emulator/sirit"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "tzdb-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762923998,
+        "narHash": "sha256-6+qt4yzisNx8cAOrWVS+g/GCeTD37iejQN06Ij6OMxU=",
+        "type": "tarball",
+        "url": "https://git.crueter.xyz/misc/tzdb_to_nx/releases/download/121125/121125.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://git.crueter.xyz/misc/tzdb_to_nx/releases/download/121125/121125.tar.gz"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
