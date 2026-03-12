@@ -1,0 +1,15 @@
+# Nix-spezifische Artefakte
+result
+result-*
+
+# Falls du direnv mit nix-direnv verwendest
+.direnv/
+
+# Falls du spezielle Nix-Shell-Caches nutzt
+.nix-profile/
+.nix-defexpr/
+
+# Allgemeine Build- und Editor-Backups, die oft stören
+.DS_Store
+*.swp
+*~
