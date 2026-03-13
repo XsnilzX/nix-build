@@ -69,7 +69,7 @@
       packages.commet = import ./nix/commet-package.nix {
         inherit pkgs;
       };
-      apps.default = flake-utils.lib.mkApp {
+      apps.eden = flake-utils.lib.mkApp {
         drv = self.packages.${system}.default;
         exePath = "/bin/eden";
       };
