@@ -1,5 +1,6 @@
 {
-  description = "Eden emulator flake build";
+  description = "Nix flake for Eden, Commet, and T3 Code";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -26,7 +27,6 @@
     };
   };
   outputs = {
-    self,
     nixpkgs,
     flake-utils,
     eden-src,
@@ -34,54 +34,45 @@
     sirit-src,
     frozen-src,
     tzdb-src,
+    ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
       };
-      cpmCustomSources = [
-        {
-          name = "mcl";
-          src = mcl-src;
-          dir = "mcl";
-          cmakeVar = "mcl_CUSTOM_DIR";
-        }
-        {
-          name = "sirit";
-          src = sirit-src;
-          dir = "sirit";
-          cmakeVar = "sirit_CUSTOM_DIR";
-        }
-        {
-          name = "frozen";
-          src = frozen-src;
-          dir = "frozen";
-          cmakeVar = "frozen_CUSTOM_DIR";
-        }
-      ];
+      packageSet = import ./nix/packages {
+        inherit
+          pkgs
+          eden-src
+          mcl-src
+          sirit-src
+          frozen-src
+          tzdb-src
+          ;
+      };
+      packages =
+        packageSet
+        // {
+          default = packageSet.eden;
+        };
+      mkApp = drv: exePath: {
+        type = "app";
+        program = "${drv}${exePath}";
+        inherit (drv) meta;
+      };
     in {
-      packages.default = import ./nix/eden-package.nix {
-        inherit pkgs cpmCustomSources;
-        edenSrc = eden-src;
-        tzdbPath = tzdb-src;
+      inherit packages;
+
+      apps = {
+        eden = mkApp packages.eden "/bin/eden";
+        commet = mkApp packages.commet "/bin/commet";
+        t3code = mkApp packages.t3code "/bin/t3code";
       };
-      packages.eden = self.packages.${system}.default;
-      packages.commet = import ./nix/commet-package.nix {
+
+      formatter = pkgs.alejandra;
+
+      devShells.default = import ./nix/shell.nix {
         inherit pkgs;
-      };
-      apps.eden = flake-utils.lib.mkApp {
-        drv = self.packages.${system}.default;
-        exePath = "/bin/eden";
-      };
-      apps.commet = flake-utils.lib.mkApp {
-        drv = self.packages.${system}.commet;
-        exePath = "/bin/commet";
-      };
-      devShells.default = pkgs.mkShell {
-        inputsFrom = [
-          self.packages.${system}.default
-          self.packages.${system}.commet
-        ];
       };
     });
 }

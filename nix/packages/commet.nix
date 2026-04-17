@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  lib = pkgs.lib;
+  inherit (pkgs) lib;
 in
   pkgs.stdenvNoCC.mkDerivation rec {
     pname = "commet";

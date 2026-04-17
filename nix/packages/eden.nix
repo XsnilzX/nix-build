@@ -4,8 +4,7 @@
   cpmCustomSources ? [],
   tzdbPath ? null,
 }: let
-  lib = pkgs.lib;
-
+  inherit (pkgs) lib;
   cpmCopyCommands =
     lib.concatMapStringsSep "\n" (pkg: ''
       cp -r --no-preserve=mode,ownership ${pkg.src} "$TMPDIR/${pkg.dir}"
@@ -76,13 +75,13 @@ in
     ];
 
     preConfigure = ''
-          # CPM may patch these sources -> needs writable copy
-          ${cpmCopyCommands}
+      # CPM may patch these sources, so provide writable copies in TMPDIR.
+      ${cpmCopyCommands}
 
-          cmakeFlagsArray+=(
+      cmakeFlagsArray+=(
       ${cpmCustomFlags}
       ${tzdbFlag}
-          )
+      )
     '';
 
     cmakeFlags = [
@@ -102,4 +101,9 @@ in
 
     # wrapQtAppsHook wraps /bin/eden for Qt runtime vars
     dontWrapQtApps = false;
+
+    meta = {
+      description = "Eden emulator packaged with pinned CPM dependencies";
+      mainProgram = "eden";
+    };
   }
