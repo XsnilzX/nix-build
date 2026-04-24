@@ -40,6 +40,7 @@
       pkgs = import nixpkgs {
         inherit system;
       };
+      inherit (pkgs) lib;
       packageSet = import ./nix/packages {
         inherit
           pkgs
@@ -50,9 +51,10 @@
           tzdb-src
           ;
       };
+      availablePackages = lib.filterAttrs (_: drv: lib.meta.availableOn pkgs.stdenv.hostPlatform drv) packageSet;
       packages =
-        packageSet
-        // {
+        availablePackages
+        // lib.optionalAttrs (availablePackages ? eden) {
           default = packageSet.eden;
         };
       mkApp = drv: exePath: {
@@ -63,11 +65,7 @@
     in {
       inherit packages;
 
-      apps = {
-        eden = mkApp packages.eden "/bin/eden";
-        commet = mkApp packages.commet "/bin/commet";
-        t3code = mkApp packages.t3code "/bin/t3code";
-      };
+      apps = lib.mapAttrs (name: drv: mkApp drv "/bin/${drv.meta.mainProgram or name}") availablePackages;
 
       formatter = pkgs.alejandra;
 

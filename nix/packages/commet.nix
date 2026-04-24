@@ -63,7 +63,7 @@ in
       homepage = "https://github.com/commetchat/commet";
       license = lib.licenses.agpl3Only;
       mainProgram = "commet";
-      platforms = lib.platforms.linux;
+      platforms = ["x86_64-linux"];
       sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     };
   }

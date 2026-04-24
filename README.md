@@ -33,6 +33,8 @@ Build everything:
 just build-all
 ```
 
+`build-all` builds the default package for the current host system. On this flake that is currently always `eden`.
+
 Run an app:
 
 ```bash
@@ -48,14 +50,17 @@ just lint
 just check
 ```
 
+`just check` runs `nix flake check --all-systems`, so it validates the full supported output matrix instead of only the current host.
+
 ## Adding or Updating Packages
 
 To add another package, keep the change surface small:
 
 1. Add a new file under `nix/packages/<name>.nix`.
 2. Export it from `nix/packages/default.nix`.
-3. Add `apps.<name>` in `flake.nix` if it should be runnable with `nix run`.
-4. Use the generic `just build <name>` and `just run <name>` commands. Add explicit aliases only if they improve discoverability.
+3. Set accurate `meta.platforms` so the package is only exposed on systems where it is actually supported.
+4. The flake will expose runnable apps automatically for packages available on the current system.
+5. Use the generic `just build <name>` and `just run <name>` commands. Add explicit aliases only if they improve discoverability.
 
 ## Eden CPM Sources
 

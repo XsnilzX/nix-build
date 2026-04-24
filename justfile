@@ -7,11 +7,9 @@ default:
 build package:
   nix build "path:$PWD#{{package}}"
 
-# Build all packaged programs.
+# Build the default package for the current host system.
 build-all:
-  just build eden
-  just build commet
-  just build t3code
+  nix build .#packages."$(nix eval --impure --expr builtins.currentSystem --raw)".default
 
 # Build the Eden emulator package.
 build-eden:
@@ -41,9 +39,9 @@ run-commet:
 run-t3code:
   just run t3code
 
-# Check that the flake evaluates and all declared checks pass.
+# Check that the flake evaluates and all declared checks pass for all supported systems.
 check:
-  nix flake check "path:$PWD"
+  nix flake check --all-systems "path:$PWD"
 
 # Enter the default development shell.
 dev:

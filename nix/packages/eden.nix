@@ -21,6 +21,13 @@
   tzdbFlag = lib.optionalString (tzdbPath != null) ''
     "-DYUZU_TZDB_PATH=${tzdbPath}"
   '';
+  qtWaylandDeps = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+    pkgs.qt6.qtwayland
+  ];
+  linuxOnlyRuntimeDeps = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+    pkgs.gamemode
+    pkgs.discord-rpc
+  ];
 in
   pkgs.clangStdenv.mkDerivation {
     pname = "eden";
@@ -66,13 +73,10 @@ in
       SDL2
       qt6.qtbase
       qt6.qtmultimedia
-      qt6.qtwayland
       qt6.qttools
       qt6.qt5compat
       qt6Packages.quazip
-      gamemode
-      discord-rpc
-    ];
+    ] ++ qtWaylandDeps ++ linuxOnlyRuntimeDeps;
 
     preConfigure = ''
       # CPM may patch these sources, so provide writable copies in TMPDIR.

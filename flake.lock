@@ -3,11 +3,11 @@
     "eden-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1776401920,
-        "narHash": "sha256-UD8oKd9ae0CbpA+y/RyKJx9MDVZn8yPprrBa4Sa6PDY=",
+        "lastModified": 1777041438,
+        "narHash": "sha256-l7QwE1XtDOW70sJgcos1qsPSCqncTmszSJ/TAAKwsrA=",
         "ref": "master",
-        "rev": "e6ad51e3d58894c388bd94753e11a4c118089e68",
-        "revCount": 28559,
+        "rev": "b3cc8723c14a48bd75f124bed67ac5a2b44e013a",
+        "revCount": 28567,
         "type": "git",
         "url": "https://git.eden-emu.dev/eden-emu/eden"
       },
@@ -71,11 +71,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1776169885,
-        "narHash": "sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM=",
+        "lastModified": 1776548001,
+        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9",
+        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
         "type": "github"
       },
       "original": {
