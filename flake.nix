@@ -17,6 +17,10 @@
       url = "git+https://github.com/eden-emulator/sirit?rev=4aa0fe9f2ca0b31d8345f89c8ca2757156ff2393";
       flake = false;
     };
+    httplib-src = {
+      url = "git+https://github.com/yhirose/cpp-httplib?ref=refs/tags/v0.37.0";
+      flake = false;
+    };
     frozen-src = {
       url = "git+https://github.com/serge-sans-paille/frozen?rev=61dce5ae18ca59931e27675c468e64118aba8744";
       flake = false;
@@ -32,6 +36,7 @@
     eden-src,
     mcl-src,
     sirit-src,
+    httplib-src,
     frozen-src,
     tzdb-src,
     ...
@@ -47,6 +52,7 @@
           eden-src
           mcl-src
           sirit-src
+          httplib-src
           frozen-src
           tzdb-src
           ;

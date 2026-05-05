@@ -73,6 +73,7 @@ in
       SDL2
       qt6.qtbase
       qt6.qtmultimedia
+      qt6.qtcharts
       qt6.qttools
       qt6.qt5compat
       qt6Packages.quazip

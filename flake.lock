@@ -52,6 +52,23 @@
         "url": "https://github.com/serge-sans-paille/frozen"
       }
     },
+    "httplib-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772834253,
+        "narHash": "sha256-I7mfT4Eb5sXUURReq3nzQRUhI4sMx4wQpdJBw+vOA/s=",
+        "ref": "refs/tags/v0.37.0",
+        "rev": "0d3a3d805c8979e3220b42fcbc0ff95980eabc06",
+        "revCount": 1796,
+        "type": "git",
+        "url": "https://github.com/yhirose/cpp-httplib"
+      },
+      "original": {
+        "ref": "refs/tags/v0.37.0",
+        "type": "git",
+        "url": "https://github.com/yhirose/cpp-httplib"
+      }
+    },
     "mcl-src": {
       "flake": false,
       "locked": {
@@ -90,6 +107,7 @@
         "eden-src": "eden-src",
         "flake-utils": "flake-utils",
         "frozen-src": "frozen-src",
+        "httplib-src": "httplib-src",
         "mcl-src": "mcl-src",
         "nixpkgs": "nixpkgs",
         "sirit-src": "sirit-src",

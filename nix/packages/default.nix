@@ -3,6 +3,7 @@
   eden-src,
   mcl-src,
   sirit-src,
+  httplib-src,
   frozen-src,
   tzdb-src,
 }: let
@@ -16,6 +17,11 @@
       src = sirit-src;
       dir = "sirit";
       cmakeVar = "sirit_CUSTOM_DIR";
+    }
+    {
+      src = httplib-src;
+      dir = "httplib";
+      cmakeVar = "httplib_CUSTOM_DIR";
     }
     {
       src = frozen-src;
